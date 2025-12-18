@@ -19,6 +19,9 @@ public class animatronicBehauviour : MonoBehaviour
     public GameObject deathScreen;
     public GameObject cameraOverlay;
     public GameObject cameraButton;
+    public GameObject doorLeft;
+    public GameObject doorRight;
+
 
     public string tuxLocation = "cam1";
     public bool isAlive = true;
@@ -77,9 +80,35 @@ public class animatronicBehauviour : MonoBehaviour
                     officeRightLocation.SetActive(true);
                     tuxLocation = "rightOffice";
                 }
-                else if (tuxLocation == "leftOffice" || tuxLocation == "rightOffice")
+                else if (tuxLocation == "rightOffice" && doorRight.activeSelf)
+                {
+                    officeRightLocation.SetActive(false);
+                    cam1Location.SetActive(true);
+                    Debug.Log("Tux failed!");
+                    tuxLocation = "cam1";
+                }
+                else if (tuxLocation == "leftOffice" && doorLeft.activeSelf)
                 {
                     officeLeftLocation.SetActive(false);
+                    cam1Location.SetActive(true);
+                    Debug.Log("Tux failed!");
+                    tuxLocation = "cam1";
+                }
+                else if (tuxLocation == "leftOffice" && !doorLeft.activeSelf)
+                {
+                    officeLeftLocation.SetActive(false);
+                    tuxJumpscare.SetActive(true);
+                    Debug.Log("Tux is in the office!");
+                    cameraOverlay.SetActive(false);
+                    cameraButton.SetActive(false);
+                
+                    yield return new WaitForSeconds(5);
+                    deathScreen.SetActive(true);
+                    isAlive = false;
+                    yield break;
+                }
+                else if (tuxLocation == "rightOffice" && !doorRight.activeSelf)
+                {
                     officeRightLocation.SetActive(false);
                     tuxJumpscare.SetActive(true);
                     Debug.Log("Tux is in the office!");

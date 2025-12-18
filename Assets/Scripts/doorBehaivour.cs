@@ -8,41 +8,38 @@ public class doorBehaivour : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("Sprite clicked!");
+        if (gameObject.name == "DoorButtonLeft")
         {
-            Vector2 mousePos = Input.mousePosition;
-            Vector2 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            
-            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
-            
-            // Debug - see what you're hitting
-            if (hit.collider != null)
-            {
-                Debug.Log("Hit: " + hit.collider.name);
-            }
-            else
-            {
-                Debug.Log("No hit");
-                return;
-            }
-            
-            if (hit.collider.name == "DoorButtonLeft")
-            {
-                Debug.Log("Clicked on left button!");
-                ToggleDoor(DoorLeft);
-            }
-            else if (hit.collider.name == "DoorButtonRight")
-            {
-                Debug.Log("Clicked on right button!");
-                ToggleDoor(DoorRight);
-            }
+            ToggleDoorLeft();
+        }
+        else if (gameObject.name == "DoorButtonRight")
+        {
+            ToggleDoorRight();
         }
     }
-    
-    void ToggleDoor(GameObject door)
+
+    void ToggleDoorLeft()
     {
-        door.SetActive(!door.activeSelf);
-        if (door.activeSelf)
+        DoorLeft.SetActive(!DoorLeft.activeSelf);
+        if (DoorLeft.activeSelf)
+        {
+            animatronicScript.increasePowerConsumption(1);
+        }
+        else
+        {
+            animatronicScript.decreasePowerConsumption(1);
+        }
+    }
+    void ToggleDoorRight()
+    {
+        DoorRight.SetActive(!DoorRight.activeSelf);
+        if (DoorRight.activeSelf)
         {
             animatronicScript.increasePowerConsumption(1);
         }

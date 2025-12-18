@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WestHallNoCamera_0: 2043793076468572322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

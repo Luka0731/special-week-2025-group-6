@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 191288385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.42}
   m_LocalScale: {x: 4.65, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1182,7 +1182,6 @@ GameObject:
   - component: {fileID: 506909312}
   - component: {fileID: 506909314}
   - component: {fileID: 506909315}
-  - component: {fileID: 506909316}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1254,8 +1253,8 @@ MonoBehaviour:
   cam1Location: {fileID: 1632588945}
   cam2Location: {fileID: 675792580}
   cam3Location: {fileID: 1955778367}
-  officeLeftLocation: {fileID: 1582162193}
-  officeRightLocation: {fileID: 1229574465}
+  officeLeftLocation: {fileID: 1229574465}
+  officeRightLocation: {fileID: 1582162193}
   tuxJumpscare: {fileID: 667859049}
   powerLevelText: {fileID: 1987962173}
   powerLevel: 100
@@ -1263,24 +1262,11 @@ MonoBehaviour:
   deathScreen: {fileID: 2122014821}
   cameraOverlay: {fileID: 608384164}
   cameraButton: {fileID: 1220668308}
+  doorLeft: {fileID: 1794601430}
+  doorRight: {fileID: 1360716315}
   tuxLocation: cam1
   isAlive: 1
   difficulty: 10
---- !u!114 &506909316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506909311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0859b3243f91d847a7f8edd6e352b5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DoorLeft: {fileID: 1794601430}
-  DoorRight: {fileID: 1360716315}
-  animatronicScript: {fileID: 506909315}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,7 +2630,7 @@ GameObject:
   - component: {fileID: 1229574467}
   - component: {fileID: 1229574466}
   m_Layer: 0
-  m_Name: LocationRight
+  m_Name: LocationLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3255,7 +3241,7 @@ GameObject:
   - component: {fileID: 1582162195}
   - component: {fileID: 1582162194}
   m_Layer: 0
-  m_Name: LocationLeft
+  m_Name: LocationRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
