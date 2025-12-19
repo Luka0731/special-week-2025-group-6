@@ -10,6 +10,8 @@ public class animatronicBehauviour : MonoBehaviour
     public GameObject cam1Location;
     public GameObject cam2Location;
     public GameObject cam3Location;
+    public GameObject cam4Location;
+    public GameObject cam5Location;
     public GameObject officeLeftLocation;
     public GameObject officeRightLocation;
     public GameObject tuxJumpscare;
@@ -23,7 +25,7 @@ public class animatronicBehauviour : MonoBehaviour
     public GameObject doorRight;
 
 
-    public string tuxLocation = "cam1";
+    public string tuxLocation = "cam3";
     public bool isAlive = true;
     public int difficulty = 1;
     int movmentInt;
@@ -52,47 +54,45 @@ public class animatronicBehauviour : MonoBehaviour
             if (movmentInt <= difficulty)
             {
                 Debug.Log("Tux is Moving!");
-                if (tuxLocation == "cam1")
+                if (tuxLocation == "cam3")
                 {
                     int randomLeftOrRight = Random.Range(1, 3);
                     if (randomLeftOrRight == 1)
                     {
-                        cam1Location.SetActive(false);
+                        cam3Location.SetActive(false);
                         cam2Location.SetActive(true);
                         tuxLocation = "cam2";
                     }
                     else
                     {
-                        cam1Location.SetActive(false);
-                        cam3Location.SetActive(true);
-                        tuxLocation = "cam3";
+                        cam3Location.SetActive(false);
+                        cam4Location.SetActive(true);
+                        tuxLocation = "cam4";
                     }
                 }
                 else if (tuxLocation == "cam2")
                 {
                     cam2Location.SetActive(false);
+                    cam5Location.SetActive(true);
+                    tuxLocation = "cam5";
+                }
+                else if (tuxLocation == "cam5")
+                {
+                    cam5Location.SetActive(false);
                     officeLeftLocation.SetActive(true);
                     tuxLocation = "leftOffice";
                 }
-                else if (tuxLocation == "cam3")
+                else if (tuxLocation == "cam4")
                 {
-                    cam3Location.SetActive(false);
+                    cam4Location.SetActive(false);
+                    cam1Location.SetActive(true);
+                    tuxLocation = "cam1";
+                }
+                else if (tuxLocation == "cam1")
+                {
+                    cam1Location.SetActive(false);
                     officeRightLocation.SetActive(true);
                     tuxLocation = "rightOffice";
-                }
-                else if (tuxLocation == "rightOffice" && doorRight.activeSelf)
-                {
-                    officeRightLocation.SetActive(false);
-                    cam1Location.SetActive(true);
-                    Debug.Log("Tux failed!");
-                    tuxLocation = "cam1";
-                }
-                else if (tuxLocation == "leftOffice" && doorLeft.activeSelf)
-                {
-                    officeLeftLocation.SetActive(false);
-                    cam1Location.SetActive(true);
-                    Debug.Log("Tux failed!");
-                    tuxLocation = "cam1";
                 }
                 else if (tuxLocation == "leftOffice" && !doorLeft.activeSelf)
                 {
@@ -119,6 +119,18 @@ public class animatronicBehauviour : MonoBehaviour
                     deathScreen.SetActive(true);
                     isAlive = false;
                     yield break;
+                }
+                else if (tuxLocation == "leftOffice" && doorLeft.activeSelf)
+                {
+                    officeLeftLocation.SetActive(false);
+                    cam3Location.SetActive(true);
+                    tuxLocation = "cam3";
+                }
+                else if (tuxLocation == "rightOffice" && doorRight.activeSelf)
+                {
+                    officeRightLocation.SetActive(false);
+                    cam3Location.SetActive(true);
+                    tuxLocation = "cam3";
                 }
             }   
         }
