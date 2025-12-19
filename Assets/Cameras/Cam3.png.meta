@@ -147,8 +147,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<< Updated upstream
     nameFileIdTable:
       Cam3_0: -7787428798295142234
+=======
+    nameFileIdTable: {}
+>>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
